@@ -4,7 +4,7 @@ using HarmonyLib;
 
 namespace RandomiserTOUM
 {
-    [BepInPlugin("com.chaos.randomiser", "TOU Randomiser", "1.0.0")]
+    [BepInPlugin("com.chaos.randomiser", "Mira Randomiser", "1.0.0")]
     public class Plugin : BasePlugin
     {
         public static Harmony HarmonyInstance;
