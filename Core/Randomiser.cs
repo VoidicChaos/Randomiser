@@ -286,10 +286,8 @@ namespace RandomiserTOUM
             catch { }
         }
 
-        private static float Rand(float min, float max) =>
-            UnityEngine.Random.Range(min, max);
+        private static float Rand(float min, float max) => UnityEngine.Random.Range(min, max); // random value generator
 
-        private static int RandInt(int min, int max) =>
-            UnityEngine.Random.Range(min, max + 1);
+        private static int RandInt(int min, int max) => UnityEngine.Random.Range(min, max + 1); // random value generator (whole number)
     }
 }
