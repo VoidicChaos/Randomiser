@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:12c24832704ead994e593f3500c7ff9701218e2aa9f0b7e3770dcc5ae0d58d3a
-size 418
+using BepInEx;
+using BepInEx.Unity.IL2CPP;
+using HarmonyLib;
+
+namespace RandomiserTOUM
+{
+    [BepInPlugin("com.chaos.randomiser", "TOU Randomiser", "1.0.0")]
+    public class Plugin : BasePlugin
+    {
+        public static Harmony HarmonyInstance;
+        public override void Load()
+        {
+            HarmonyInstance = new Harmony("com.chaos.randomiser");
+            HarmonyInstance.PatchAll();
+        }
+    }
+}
