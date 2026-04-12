@@ -12,7 +12,7 @@ namespace RandomiserTOUM.Patches
         {
             string msg = __instance.freeChatField.Text?.Trim() ?? string.Empty;
             if (string.IsNullOrEmpty(msg)) return true;
-            if (msg.StartsWith("/randomise") || msg.StartsWith("/randomize") || msg.StartsWith("/rand")) // added /rand (simpler) and /randomize (for american english)
+            if (msg.StartsWith("/randomise"))
             {
                 var parts = msg.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 float? lower = null;
