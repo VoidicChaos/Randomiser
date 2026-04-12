@@ -9,7 +9,7 @@ namespace RandomiserTOUM
     [BepInPlugin("chaos.randomiser", "Mira Randomiser", "1.0.1")]
     [BepInDependency("auavengers.tou.mira")]
     [BepInDependency("mira.api")]
-    public class Plugin : BasePlugin, IMiraPlugin
+    public class RandomiserPlugin : BasePlugin, IMiraPlugin
     {
         public static Harmony HarmonyInstance;
         public string ID => "com.colin.randomiser";
