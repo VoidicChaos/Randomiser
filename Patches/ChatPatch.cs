@@ -12,28 +12,24 @@ namespace RandomiserTOUM.Patches
         {
             string msg = __instance.freeChatField.Text?.Trim() ?? string.Empty;
             if (string.IsNullOrEmpty(msg)) return true;
-            if (msg.StartsWith("/randomise"))
+
+            if (msg.StartsWith("/randomise", StringComparison.OrdinalIgnoreCase))
             {
-                var parts = msg.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                float? lower = null;
-                float? upper = null;
-                if (parts.Length >= 3 &&
-                    float.TryParse(parts[1], out float l) &&
-                    float.TryParse(parts[2], out float u))
+                if (!AmongUsClient.Instance.AmHost)
                 {
-                    lower = l;
-                    upper = u;
+                    DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
+                        PlayerControl.LocalPlayer,
+                        "<color=#FF0000>[Randomiser]</color> Only the host can use this command."
+                    );
+                    ClearChat(__instance);
+                    return false;
                 }
-                Randomiser.GenerateAndApply(lower, upper);
-                DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                    PlayerControl.LocalPlayer,
-                    lower.HasValue
-                        ? $"<color=#87CEEB>[Random]</color> Applied with range {lower} to {upper}"
-                        : "<color=#87CEEB>[Random]</color> Random config generated."
-                );
+
+                Randomiser.GenerateAndApply();
                 ClearChat(__instance);
                 return false;
             }
+
             return true;
         }
 
