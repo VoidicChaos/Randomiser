@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>RandomiserTOUM</AssemblyName>
-    <RootNamespace>RandomiserTOUM</RootNamespace>
+    <AssemblyName>MiraRandomiser</AssemblyName>
+    <RootNamespace>MiraRandomiser</RootNamespace>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
