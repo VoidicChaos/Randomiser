@@ -6,15 +6,15 @@ using MiraAPI.PluginLoading;
 
 namespace RandomiserTOUM
 {
-    [BepInPlugin("chaos.randomiser", "Mira Randomiser", "1.0.1")]
+    [BepInPlugin("chaos.randomiser", "Mira Randomiser", "1.0.0")]
     [BepInDependency("auavengers.tou.mira")]
     [BepInDependency("mira.api")]
     public class RandomiserPlugin : BasePlugin, IMiraPlugin
     {
         public static Harmony HarmonyInstance;
-        public string ID => "com.colin.randomiser";
+        public string ID => "chaos.randomiser";
         public string Name => "Mira Randomiser";
-        public string OptionsTitleText => "Mira Randomiser";
+        public string OptionsTitleText => "Randomiser";
         public ConfigFile GetConfigFile() => Config;
         public override void Load()
         {
