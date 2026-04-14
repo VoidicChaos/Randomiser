@@ -67,7 +67,7 @@ namespace RandomiserTOUM
             OptionGroupSingleton<RandomiserOptions>.Instance.RandomiseMira;
 
         // Crewmate Roles (Chance)
-        [ModdedToggleOption("Crewmate Chance Limiting Enabled")]
+        [ModdedToggleOption("Crewmate Limiting Enabled")]
         public bool CrewChanceLimitsEnabled { get; set; } = true;
 
 
@@ -83,7 +83,7 @@ namespace RandomiserTOUM
 
 
         // Neutral Role (Chance)
-        [ModdedToggleOption("Neutral Chance Limiting Enabled")]
+        [ModdedToggleOption("Neutral Limiting Enabled")]
         public bool NeutralChanceLimitsEnabled { get; set; } = true;
 
 
@@ -99,7 +99,7 @@ namespace RandomiserTOUM
 
 
         // Impostor Roles (Chance)
-        [ModdedToggleOption("Impostor Chance Limiting Enabled")]
+        [ModdedToggleOption("Impostor Limiting Enabled")]
         public bool ImpostorChanceLimitsEnabled { get; set; } = true;
 
 
