@@ -13,7 +13,7 @@ namespace RandomiserTOUM.Patches
             string msg = __instance.freeChatField.Text?.Trim() ?? string.Empty;
             if (string.IsNullOrEmpty(msg)) return true;
 
-            if (msg.StartsWith("/randomise", StringComparison.OrdinalIgnoreCase))
+            if (msg.StartsWith("/randomise", StringComparison.OrdinalIgnoreCase) || msg.StartsWith("/randomize", StringComparison.OrdinalIgnoreCase) || msg.StartsWith("/rand", StringComparison.OrdinalIgnoreCase))
             {
                 if (!AmongUsClient.Instance.AmHost)
                 {
