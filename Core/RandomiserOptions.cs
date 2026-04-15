@@ -66,6 +66,52 @@ namespace RandomiserTOUM
         public override Func<bool> GroupVisible => () =>
             OptionGroupSingleton<RandomiserOptions>.Instance.RandomiseMira;
 
+        // Crewmate Roles (Count)
+        [ModdedToggleOption("Crewmate Limiting Enabled")]
+        public bool CrewCountLimitsEnabled { get; set; } = true;
+
+
+
+        [ModdedNumberOption("Min Crewmate Role Count", 0f, 15f, 1f, MiraNumberSuffixes.None)]
+        public float MinCrewCount { get; set; } = 0f;
+
+
+
+        [ModdedNumberOption("Max Crewmate Role Count", 0f, 15f, 1f, MiraNumberSuffixes.None)]
+        public float MaxCrewCount { get; set; } = 15f;
+
+
+
+        // Neutral Role (Count)
+        [ModdedToggleOption("Neutral Limiting Enabled")]
+        public bool NeutralCountLimitsEnabled { get; set; } = true;
+
+
+
+        [ModdedNumberOption("Min Neutral Role Count", 0f, 15f, 1f, MiraNumberSuffixes.None)]
+        public float MinNeutralCount { get; set; } = 0f;
+
+
+
+        [ModdedNumberOption("Max Neutral Role Count", 0f, 15f, 1f, MiraNumberSuffixes.None)]
+        public float MaxNeutralCount { get; set; } = 15f;
+
+
+
+        // Impostor Roles (Count)
+        [ModdedToggleOption("Impostor Limiting Enabled")]
+        public bool ImpostorCountLimitsEnabled { get; set; } = true;
+
+
+
+        [ModdedNumberOption("Min Impostor Role Count", 0f, 15f, 1f, MiraNumberSuffixes.None)]
+        public float MinImpostorCount { get; set; } = 0f;
+
+
+
+        [ModdedNumberOption("Max Impostor Role Count", 0f, 15f, 1f, MiraNumberSuffixes.None)]
+        public float MaxImpostorCount { get; set; } = 15f;
+
         // Crewmate Roles (Chance)
         [ModdedToggleOption("Crewmate Limiting Enabled")]
         public bool CrewChanceLimitsEnabled { get; set; } = true;
@@ -112,4 +158,6 @@ namespace RandomiserTOUM
         [ModdedNumberOption("Max Impostor Role Chance", 0f, 100f, 10f, MiraNumberSuffixes.Percent)]
         public float MaxImpostorChance { get; set; } = 100f;
     }
+
+    
 }
