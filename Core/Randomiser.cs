@@ -38,14 +38,11 @@ namespace RandomiserTOUM
             "Global Better Maps", "Randomized Door Mode", "Random Map Choice"
         };
 
-        private static RandomiserOptions Options =>
-            OptionGroupSingleton<RandomiserOptions>.Instance;
+        private static RandomiserOptions Options => OptionGroupSingleton<RandomiserOptions>.Instance;
 
-        private static RandomiserMIRAOptions MIRAOptions =>
-            OptionGroupSingleton<RandomiserMIRAOptions>.Instance;
+        private static RandomiserMIRAOptions MIRAOptions => OptionGroupSingleton<RandomiserMIRAOptions>.Instance;
 
-        private static RandomiserLimitOptions Limits =>
-            OptionGroupSingleton<RandomiserLimitOptions>.Instance;
+        private static RandomiserLimitOptions Limits => OptionGroupSingleton<RandomiserLimitOptions>.Instance;
 
         public static void GenerateAndApply()
         {
@@ -222,15 +219,12 @@ namespace RandomiserTOUM
             }
         }
 
-        private static void ApplyRoles() // randomise role chances in the limits
+        private static void ApplyRoles() // randomise role chances/count in the limits
         {
-            var (crewMinSteps, crewMaxSteps) = GetChanceSteps(
-                Limits.CrewChanceLimitsEnabled, Limits.MinCrewChance, Limits.MaxCrewChance);
 
-            var (neutMinSteps, neutMaxSteps) = GetChanceSteps(
-                Limits.NeutralChanceLimitsEnabled, Limits.MinNeutralChance, Limits.MaxNeutralChance);
-            var (impMinSteps, impMaxSteps) = GetChanceSteps(
-                Limits.ImpostorChanceLimitsEnabled, Limits.MinImpostorChance, Limits.MaxImpostorChance);
+            var (crewMinSteps, crewMaxSteps) = GetChanceSteps(Limits.CrewChanceLimitsEnabled, Limits.MinCrewChance, Limits.MaxCrewChance);
+            var (neutMinSteps, neutMaxSteps) = GetChanceSteps(Limits.NeutralChanceLimitsEnabled, Limits.MinNeutralChance, Limits.MaxNeutralChance);
+            var (impMinSteps, impMaxSteps) = GetChanceSteps(Limits.ImpostorChanceLimitsEnabled, Limits.MinImpostorChance, Limits.MaxImpostorChance);
 
             foreach (var role in CustomRoleManager.CustomRoleBehaviours)
             {
@@ -242,20 +236,35 @@ namespace RandomiserTOUM
                     if (MIRAOptions.RandomiseRoleChances && customRole.Configuration.CanModifyChance)
                     {
                         int minSteps, maxSteps;
+                        int minCount, maxCount;
                         switch (customRole.Team)
                         {
                             case ModdedRoleTeams.Impostor:
                                 (minSteps, maxSteps) = (impMinSteps, impMaxSteps);
+                                minCount = (int)Limits.MinImpostorCount;
+                                maxCount = (int)Limits.MaxImpostorCount;
                                 break;
                             case ModdedRoleTeams.Custom:
                                 (minSteps, maxSteps) = (neutMinSteps, neutMaxSteps);
+                                minCount = (int)Limits.MinNeutralCount;
+                                maxCount = (int)Limits.MaxNeutralCount;
                                 break;
                             default:
                                 (minSteps, maxSteps) = (crewMinSteps, crewMaxSteps);
+                                minCount = (int)Limits.MinCrewCount;
+                                maxCount = (int)Limits.MaxCrewCount;
                                 break;
                         }
+
+                        if (minSteps > maxSteps) (minSteps, maxSteps) = (maxSteps, minSteps);
+
+                        if (minCount > maxCount) (minCount, maxCount) = (maxCount, minCount);
+
                         customRole.SetChance(RandInt(minSteps, maxSteps) * 10);
+
+                        customRole.SetCount(RandInt(minCount, maxCount));
                     }
+
                 }
                 catch { }
             }
