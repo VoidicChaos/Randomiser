@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>MiraRandomiser</AssemblyName>
@@ -6,8 +7,12 @@
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
-  </PropertyGroup> 
+  </PropertyGroup>
+
   <ItemGroup>
+    <Reference Include="Reactor">
+      <HintPath>assets/Reactor.dll</HintPath>
+    </Reference>
     <Reference Include="BepInEx.Core">
       <HintPath>assets/BepInEx.Core.dll</HintPath>
     </Reference>
@@ -45,4 +50,5 @@
       <HintPath>assets/MiraAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
+
 </Project>
