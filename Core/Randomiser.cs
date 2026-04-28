@@ -46,6 +46,15 @@ namespace RandomiserTOUM
 
         public static void GenerateAndApply()
         {
+            if (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started)
+            {
+                var chat = DestroyableSingleton<HudManager>.Instance.Chat;
+                var player = PlayerControl.LocalPlayer;
+                chat.AddChat(player,
+                    "<color=#87CEEB>[Randomiser]</color> <color=#FF0000>Cannot randomise during a round.</color>");
+                return;
+            }
+
             HudManager.Instance.StartCoroutine(GenerateAndApplyCoroutine().WrapToIl2Cpp());
         }
 
